@@ -6,15 +6,15 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/23 15:03:47 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/22 17:23:34 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/22 20:04:59 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-int		error(void)
+int		error(char *s)
 {
-	ft_putstr("error");
+	ft_putstr(s);
 	exit(0);
 	return (0);
 }

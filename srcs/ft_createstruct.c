@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:42:35 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/22 18:37:29 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/22 20:18:59 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static	t_point		*ft_pointnew(int x, int y, int z, int coln)
 	t_point	*point;
 
 	if (!(point = (t_point *)malloc(sizeof(*point))))
-		error();
+		error("error : ft_pointnew");
 	point->x = x;
 	point->y = y;
 	point->z = z;
@@ -46,7 +46,7 @@ static	int			verif_str(char *s)
 	return (0);
 }
 
-t_point				**init_point(char *line, int j)
+t_point				**init_point(t_env *init, char *line, int j)
 {
 	int		i;
 	int		coln;
@@ -57,17 +57,22 @@ t_point				**init_point(char *line, int j)
 	coln = ft_countcara(line);
 	s = ft_strsplit(line, 32);
 	if (!(point = (t_point **)malloc(sizeof(*point) * (coln + 1))))
-		error();
+		error("error : init_point");
 	while (i < coln)
 	{
 		if (verif_str(s[i]) == 0)
-			error();
+			error("error : verif_str");
 		point[i] = ft_pointnew(i, j, ft_atoi(s[i]), coln);
+		if (point[i]->z == 42)
+		{
+			init->posinitx = i;
+			init->posinity = j;
+		}
 		free(s[i]);
 		i++;
 	}
 	if (i == 0)
-		error();
+		error("error : i == 0");
 	free(s);
 	return (point);
 }

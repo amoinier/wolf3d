@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 14:40:48 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/22 18:37:33 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/22 20:07:26 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static	t_point		***ft_realloc(t_point ***p, int nline)
 
 	i = 0;
 	if (!(tmp = (t_point ***)malloc(sizeof(tmp) * (nline + 1))))
-		error();
+		error("error : ft_realloc");
 	while (i != nline)
 	{
 		tmp[i] = p[i];
@@ -31,7 +31,7 @@ static	t_point		***ft_realloc(t_point ***p, int nline)
 	return (p);
 }
 
-t_point				***ft_createstruct(char **av)
+t_point				***ft_createstruct(t_env *init, char **av)
 {
 	t_point	***point;
 	int		fd;
@@ -41,19 +41,19 @@ t_point				***ft_createstruct(char **av)
 
 	i = 0;
 	if (!(point = (t_point ***)malloc(sizeof(point))))
-		error();
+		error("error : ft_createstruct");
 	if ((fd = open(av[1], O_RDONLY)) == -1)
-		error();
+		error("error : Bad fd");
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
-		point[i] = init_point(line, i);
+		point[i] = init_point(init, line, i);
 		point = ft_realloc(point, i + 1);
 		free(line);
 		line = NULL;
 		i++;
 	}
 	if (ret != 0 || i == 0)
-		error();
+		error("error : ret != 0 || i == 0");
 	free(line);
 	line = NULL;
 	point[0][0]->sizeline = i;

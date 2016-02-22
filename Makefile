@@ -6,7 +6,7 @@
 #    By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/07 12:02:38 by amoinier          #+#    #+#              #
-#    Updated: 2016/02/22 17:44:33 by amoinier         ###   ########.fr        #
+#    Updated: 2016/02/22 19:37:52 by amoinier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ $(ODIR)%.o: $(SDIR)%.c
 header:
 	@mkdir -p $(ODIR)
 	@echo "${YEL}"
-	@echo "PROJET"
+	@echo "WOLF 3D"
 	@echo "By: amoinier"
 	@echo
 	@echo "${STD}"
