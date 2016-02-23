@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 14:40:48 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/22 20:07:26 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/23 15:47:26 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,7 @@ t_point				***ft_createstruct(t_env *init, char **av)
 	free(line);
 	line = NULL;
 	point[0][0]->sizeline = i;
+	if (init->posinitx == -1 || init->posinity == -1)
+		error("error : posinitx == -1");
 	return (point);
 }

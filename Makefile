@@ -6,7 +6,7 @@
 #    By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/07 12:02:38 by amoinier          #+#    #+#              #
-#    Updated: 2016/02/22 19:37:52 by amoinier         ###   ########.fr        #
+#    Updated: 2016/02/23 11:30:53 by amoinier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ BLU =		\033[34m
 CYA =		\033[36m
 STD =		\033[39m
 
-NAME =		wolf
+NAME =		wolf3d
 
 LDIR =		./libs/
 LIBS =		-lft

@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:10:31 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/22 20:05:09 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/23 15:59:12 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,21 @@ typedef	struct	s_env
 	void		*win;
 	int			width;
 	int			height;
+
 	int			sizeb;
+	int			sizefps;
+	int			angle;
 	int			posinitx;
 	int			posinity;
+	int			poscamx;
+	int			poscamy;
+	int			camangle;
 
 	t_img		*img;
 	t_point		***point;
 
+	int			moveh;
+	int			moved;
 }				t_env;
 
 int				mouse_hook(int button, int x, int y, t_env *init);
@@ -60,7 +68,7 @@ int				expose_hook(t_env *init);
 
 void			mlx_var(t_env *init, char **av);
 
-void    	raycaster(t_env *init, t_point ***point);
+void    		raycaster(t_env *init, t_point ***point);
 
 void			pixel_put_image(t_env *init, int x, int y, int color);
 void			ft_clear_img(t_env *init);

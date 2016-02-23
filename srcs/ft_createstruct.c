@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:42:35 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/22 20:18:59 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/23 17:09:41 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static	t_point		*ft_pointnew(int x, int y, int z, int coln)
 	if (x == 0)
 		point->sizecol = coln;
 	point->col = 0;
+	if (z == 1)
+		point->col = 0x5b0202;
 	return (point);
 }
 
