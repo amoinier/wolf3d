@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 14:40:48 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/23 15:47:26 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/24 15:52:36 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static	t_point		***ft_realloc(t_point ***p, int nline)
 	return (p);
 }
 
-t_point				***ft_createstruct(t_env *init, char **av)
+t_point			***ft_createstruct(t_env *init, char **av)
 {
 	t_point	***point;
 	int		fd;

@@ -6,15 +6,13 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 19:37:32 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/24 15:39:59 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/24 17:27:51 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 #include <math.h>
 #include <stdio.h>
-
-#define PI 3.14159265
 
 int		dist_cam(t_point ***point, double xcam, double ycam, int angle)
 {
@@ -25,7 +23,7 @@ int		dist_cam(t_point ***point, double xcam, double ycam, int angle)
 	sa = sin(angle * (PI / 180));
 	ca = cos(angle * (PI / 180));
 	step = 0;
-	while (point[(int)xcam][(int)ycam]->z == 0)
+	while (point[(int)ycam][(int)xcam]->z != 1)
 	{
 		xcam -= ca;
 		ycam -= sa;
@@ -78,7 +76,6 @@ void	raycaster(t_env *init, t_point ***point)
 
 	x = 0;
 	dist = (dist_cam(point, (double)init->posinitx, (double)init->posinity, init->camangle));
-	ft_putnbr(dist);
 	if (dist <= 0)
 		dist = 1;
 	sizewall = init->height / dist;

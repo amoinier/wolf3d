@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:09:53 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/24 15:09:50 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/24 16:04:49 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void			mlx_var(t_env *init, char **av)
 	mlx_hook(init->win, 2, 0, key_hook, init);
 	//mlx_hook(init->win, 6, 0, mouse, init);
 	//mlx_hook(init->win, 4, 0, mouse_hook, init);
-	//mlx_expose_hook(init->win, expose_hook, init);
+	mlx_expose_hook(init->win, expose_hook, init);
 	mlx_loop(init->mlx);
 }
 
