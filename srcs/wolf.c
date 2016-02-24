@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:09:53 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/23 15:59:28 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/24 12:07:30 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static	void	ft_initenv(t_env *init)
 	init->angle = 60;
 	init->poscamx = 0;
 	init->poscamy = 0;
-	init->camangle = 0;
+	init->camangle = 90;
 	init->moveh = 0;
 	init->moved = 0;
 	init->img = ft_init_img(init);

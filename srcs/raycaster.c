@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 19:37:32 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/23 17:40:31 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/24 11:24:35 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,6 @@ int   dist_cam(t_point ***point, int xcam, int ycam)
         if (point[y][xcam]->z == 1)
             return (y);
         y--;
-    }
-    return (-1);
-}
-
-int   distdiag_cam(t_point ***point, int xcam, int ycam)
-{
-    int y;
-    int x;
-
-    y = ycam;
-    x = xcam;
-    while (y >= 0 && x >= 0)
-    {
-        if (point[y][x]->z == 1)
-            return (y);
-        y--;
-        x--;
     }
     return (-1);
 }
