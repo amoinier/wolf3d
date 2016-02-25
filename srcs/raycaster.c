@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 19:37:32 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/25 18:11:22 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/25 20:26:14 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int		dist_cam(t_env *init, double xcam, double ycam, int angle)
 	int		step;
 	double	dist;
 	int		adnv;
-
 	sa = sin(angle * (PI / 180));
 	ca = cos(angle * (PI / 180));
 	step = 0;
@@ -81,7 +80,7 @@ void	draw_floor(t_env *init, int x, int sizewall)
 		y = (init->height / 2) + (sizewall / 2);
 		while (y <= init->height)
 		{
-			pixel_put_image(init, x2, y, 0x373737);
+			pixel_put_image(init, x2, y, 0x333333);
 			y++;
 		}
 		x2++;
@@ -96,10 +95,10 @@ void	raycaster(t_env *init)
 	int	ang;
 
 	x = 0;
-	ang = 0;
-	while (ang <= 60)
+	ang = init->camangle - 30;
+	while (ang <= init->camangle + 30)
 	{
-		dist = (dist_cam(init, (double)init->posinitx, (double)init->posinity, init->camangle - 30 + ang));
+		dist = (dist_cam(init, (double)init->posinitx, (double)init->posinity, ang));
 		if (dist <= 0)
 			dist = 1;
 		sizewall = init->height / dist;
@@ -107,6 +106,8 @@ void	raycaster(t_env *init)
 		draw_floor(init, x, sizewall);
 		draw_wall(init, x, sizewall);
 		x += (init->width / 60);
+		if (init->camangle == 90)
+			printf("\n%f\n", init->distval);
 		ang++;
 	}
 }
