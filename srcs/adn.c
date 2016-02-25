@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 11:51:18 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/25 16:26:33 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/25 16:35:19 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	adn(t_point ***point, double x1, double x2, double y1, double y2)
 	{
 		x = x + dx;
 		y = y + dy;
+		printf("%f - %f\n", x, y);
 		i++;
 	}
 	return (i);
