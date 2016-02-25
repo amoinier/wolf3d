@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 19:37:32 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/25 20:26:14 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/25 21:17:42 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,22 @@ int		dist_cam(t_env *init, double xcam, double ycam, int angle)
 	int		step;
 	double	dist;
 	int		adnv;
+
 	sa = sin(angle * (PI / 180));
 	ca = cos(angle * (PI / 180));
 	step = 0;
 	x2 = xcam - (10 * ca);
 	y2 = ycam - (10 * sa);
+	if (x2 < 0)
+		x2 = 0;
+	if (y2 < 0)
+		y2 = 0;
 	adnv = adn(init, xcam, x2, ycam, y2);
 	dist = sqrt((sa * sa) + (ca * ca)) * adnv;
 	return (adnv);
 }
 
-void	draw_sky(t_env *init, int x, int sizewall)
+void	draw_wall(t_env *init, int x, double sizewall)
 {
 	int	y;
 	int	x2;
@@ -41,26 +46,8 @@ void	draw_sky(t_env *init, int x, int sizewall)
 	x2 = x;
 	while (x2 <= x + 64)
 	{
-		y = 0;
-		while (y <= (init->height / 2) - (sizewall / 2))
-		{
-			pixel_put_image(init, x2, y, 0x1272af);
-			y++;
-		}
-		x2++;
-	}
-}
-
-void	draw_wall(t_env *init, int x, int sizewall)
-{
-	int	y;
-	int	x2;
-
-	x2 = x;
-	while (x2 <= x + 64)
-	{
-		y = (init->height / 2) - (sizewall / 2);
-		while (y <= (init->height / 2) + (sizewall / 2))
+		y = ((double)init->height / 2) - (sizewall / 2);
+		while (y <= ((double)init->height / 2) + (sizewall / 2))
 		{
 			pixel_put_image(init, x2, y, 0x5b0202);
 			y++;
@@ -69,45 +56,23 @@ void	draw_wall(t_env *init, int x, int sizewall)
 	}
 }
 
-void	draw_floor(t_env *init, int x, int sizewall)
-{
-	int	y;
-	int	x2;
-
-	x2 = x;
-	while (x2 <= x + 64)
-	{
-		y = (init->height / 2) + (sizewall / 2);
-		while (y <= init->height)
-		{
-			pixel_put_image(init, x2, y, 0x333333);
-			y++;
-		}
-		x2++;
-	}
-}
-
 void	raycaster(t_env *init)
 {
-	int	x;
-	int	sizewall;
-	int	dist;
-	int	ang;
+	int		x;
+	int		ang;
+	double	sizewall;
 
 	x = 0;
 	ang = init->camangle - 30;
 	while (ang <= init->camangle + 30)
 	{
-		dist = (dist_cam(init, (double)init->posinitx, (double)init->posinity, ang));
-		if (dist <= 0)
-			dist = 1;
-		sizewall = init->height / dist;
-		draw_sky(init, x, sizewall);
-		draw_floor(init, x, sizewall);
+		dist_cam(init, (double)init->posinitx, (double)init->posinity, ang);
+		if (init->distval < 2)
+			init->distval = 2;
+		sizewall = (double)init->height / (init->distval / 2);
+		//printf("%f\n", sizewall);
 		draw_wall(init, x, sizewall);
 		x += (init->width / 60);
-		if (init->camangle == 90)
-			printf("\n%f\n", init->distval);
 		ang++;
 	}
 }

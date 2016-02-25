@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 11:51:18 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/25 20:12:23 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/25 21:19:44 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,14 @@ int	adn(t_env *init, double x1, double x2, double y1, double y2)
 		y = y + dy;
 		i++;
 	}
-	//printf("%f - %f\n", x, y);
-	init->distval = sqrt(x * x + y * y);
+	//printf("%f - %f\n", y1, y2);
+	init->distval = sqrt(fabs(x - x1) * fabs(x - x1) + fabs(y - y1) * fabs(y - y1));
 	if (x1 - x2 == 0)
-		init->distval = y;
+		init->distval = fabs(y - y1);
 	else if (y1 - y2 == 0)
-		init->distval = x;
+		init->distval = fabs(x - x1);
+	if (init->distval < 2)
+		init->distval = 2;
+	printf("%f\n", init->distval);
 	return (i);
 }
