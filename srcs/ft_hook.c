@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:12:54 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/25 16:24:41 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/25 18:11:22 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ int				key_hook(int keycode, t_env *init)
 	if (keycode == 124 && init->point[init->posinity][init->posinitx + 1]->z != 1)
 		init->posinitx++;
 	camera_move(keycode, init);
-	raycaster(init, init->point);
+	raycaster(init);
 	mlx_put_image_to_window(init->mlx, init->win, init->img->img, 0, 0);
 	return (0);
 }
 
 int				expose_hook(t_env *init)
 {
-	raycaster(init, init->point);
+	raycaster(init);
 	return (0);
 }
