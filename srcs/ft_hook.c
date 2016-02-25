@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:12:54 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/24 17:25:16 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/25 16:24:41 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int				key_hook(int keycode, t_env *init)
 		init->posinity--;
 	if (keycode == 125 && init->point[init->posinity + 1][init->posinitx]->z != 1)
 		init->posinity++;
-	if (keycode == 123 && init->point[init->posinity][init->posinitx - 2]->z != 1)
+	if (keycode == 123 && init->point[init->posinity][init->posinitx - 1]->z != 1)
 		init->posinitx--;
 	if (keycode == 124 && init->point[init->posinity][init->posinitx + 1]->z != 1)
 		init->posinitx++;
