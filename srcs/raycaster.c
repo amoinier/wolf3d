@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 19:37:32 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/25 21:17:42 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/27 00:32:02 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,7 @@ void	raycaster(t_env *init)
 	while (ang <= init->camangle + 30)
 	{
 		dist_cam(init, (double)init->posinitx, (double)init->posinity, ang);
-		if (init->distval < 2)
-			init->distval = 2;
 		sizewall = (double)init->height / (init->distval / 2);
-		//printf("%f\n", sizewall);
 		draw_wall(init, x, sizewall);
 		x += (init->width / 60);
 		ang++;

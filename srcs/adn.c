@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 11:51:18 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/25 21:19:44 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/27 00:32:05 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,5 @@ int	adn(t_env *init, double x1, double x2, double y1, double y2)
 		init->distval = fabs(x - x1);
 	if (init->distval < 2)
 		init->distval = 2;
-	printf("%f\n", init->distval);
 	return (i);
 }
