@@ -14,7 +14,7 @@
 #include <math.h>
 #include <stdio.h>
 
-int		dist_cam(t_env *init, double xcam, double ycam, int angle)
+int		dist_cam(t_env *init, double xcam, double ycam, double angle)
 {
 	double	sa;
 	double	ca;
@@ -41,35 +41,31 @@ int		dist_cam(t_env *init, double xcam, double ycam, int angle)
 void	draw_wall(t_env *init, int x, double sizewall)
 {
 	int	y;
-	int	x2;
 
-	x2 = x;
-	while (x2 <= x + 64)
+	y = ((double)init->height / 2) - (sizewall / 2);
+	while (y <= ((double)init->height / 2) + (sizewall / 2))
 	{
-		y = ((double)init->height / 2) - (sizewall / 2);
-		while (y <= ((double)init->height / 2) + (sizewall / 2))
-		{
-			pixel_put_image(init, x2, y, 0x5b0202);
-			y++;
-		}
-		x2++;
+		pixel_put_image(init, x, y, 0x5b0202);
+		y++;
 	}
 }
 
 void	raycaster(t_env *init)
 {
 	int		x;
-	int		ang;
+	double	ang;
 	double	sizewall;
+	double	scal;
 
 	x = 0;
 	ang = init->camangle - 30;
+	scal = 60 / (double)init->width;
 	while (ang <= init->camangle + 30)
 	{
 		dist_cam(init, (double)init->posinitx, (double)init->posinity, ang);
 		sizewall = (double)init->height / (init->distval / 2);
 		draw_wall(init, x, sizewall);
-		x += (init->width / 60);
-		ang++;
+		x++;
+		ang += scal;
 	}
-}
+} 
