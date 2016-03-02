@@ -6,11 +6,12 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:12:54 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/02 15:57:25 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/02 18:38:07 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
+#include <stdio.h>
 /*
 int				mouse_hook(int button, int x, int y, t_env *init)
 {

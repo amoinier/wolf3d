@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:10:31 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/25 18:11:10 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/02 20:07:10 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int				expose_hook(t_env *init);
 void			mlx_var(t_env *init, char **av);
 
 void			raycaster(t_env *init);
-int				adn(t_env *init, double x1, double x2, double y1, double y2);
+double				adn(t_env *init, double x1, double x2, double y1, double y2);
 
 void			pixel_put_image(t_env *init, int x, int y, int color);
 void			ft_clear_img(t_env *init);

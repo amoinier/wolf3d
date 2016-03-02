@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 11:51:18 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/02 16:35:59 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/02 20:07:04 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 #include <math.h>
 #include <stdio.h>
 
-int	adn(t_env *init, double x1, double x2, double y1, double y2)
+double	adn(t_env *init, double x1, double x2, double y1, double y2)
 {
 	double	size;
 	double	dx;
 	double	dy;
 	double	x;
 	double	y;
-	int		i;
 
 	size = fabs(y2 - y1);
 	if (fabs(x2 - x1) >= size)
@@ -31,14 +30,13 @@ int	adn(t_env *init, double x1, double x2, double y1, double y2)
 	dy = (y2 - y1) / size;
 	x = x1 + 0.1;
 	y = y1 + 0.1;
-	i = 1;
+	//printf("%f\n\n", dx);
 	while (init->point[(int)y][(int)x]->z != 1)
 	{
-		x = x + dx;
-		y = y + dy;
-		i++;
+		x += dx;
+		y += dy;
 	}
-	//printf("%f - %f\n", x, y);
 	init->distval = sqrt(fabs(x - x1) * fabs(x - x1) + fabs(y - y1) * fabs(y - y1));
-	return (i);
+	printf("%f\n", init->distval);
+	return (init->distval);
 }
