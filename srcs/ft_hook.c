@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:12:54 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/26 17:39:55 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/02 15:57:25 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,9 @@ void	camera_move(int keycode, t_env *init)
 	else if (init->camangle == 0)
 		init->camangle = 360;
 	if (keycode == 12)
-	{
 		init->camangle -= 5;
-	}
 	if (keycode == 14)
-	{
 		init->camangle += 5;
-	}
 }
 
 int				key_hook(int keycode, t_env *init)
