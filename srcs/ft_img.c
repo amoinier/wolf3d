@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 12:13:16 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/22 17:23:51 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/03 15:04:53 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,12 @@ void			pixel_put_image(t_env *init, int x, int y, int color)
 		color /= 256;
 		data[i + 2] = color % 256;
 	}
+}
+
+void	print_xpm(t_env *init, char *filename)
+{
+	init->sky->height = 200;
+	init->sky->width = 200;
+	init->sky = mlx_xpm_file_to_image(init->mlx, filename, &init->sky->width, &init->sky->height);
+	mlx_put_image_to_window(init->mlx, init->win, init->sky, 0, 0);
 }

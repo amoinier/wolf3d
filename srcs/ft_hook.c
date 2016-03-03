@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:12:54 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/02 18:38:07 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/03 15:05:08 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	camera_move(int keycode, t_env *init)
 	else if (init->camangle == 0)
 		init->camangle = 360;
 	if (keycode == 12)
-		init->camangle -= 5;
+		init->camangle -= 3;
 	if (keycode == 14)
-		init->camangle += 5;
+		init->camangle += 3;
 }
 
 int				key_hook(int keycode, t_env *init)
@@ -44,16 +44,17 @@ int				key_hook(int keycode, t_env *init)
 		mlx_destroy_window(init->mlx, init->win);
 		exit(0);
 	}
-	if (keycode == 126 && init->point[init->posinity - 1][init->posinitx]->z != 1)
-		init->posinity--;
-	if (keycode == 125 && init->point[init->posinity + 1][init->posinitx]->z != 1)
-		init->posinity++;
-	if (keycode == 123 && init->point[init->posinity][init->posinitx - 1]->z != 1)
-		init->posinitx--;
-	if (keycode == 124 && init->point[init->posinity][init->posinitx + 1]->z != 1)
-		init->posinitx++;
+	if (keycode == 126 && init->point[(int)init->posinity - 1][(int)init->posinitx]->z != 1)
+		init->posinity -= 0.1;
+	if (keycode == 125 && init->point[(int)init->posinity + 1][(int)init->posinitx]->z != 1)
+		init->posinity += 0.1;
+	if (keycode == 123 && init->point[(int)init->posinity][(int)init->posinitx - 1]->z != 1)
+		init->posinitx -= 0.1;
+	if (keycode == 124 && init->point[(int)init->posinity][(int)init->posinitx + 1]->z != 1)
+		init->posinitx += 0.1;
 	camera_move(keycode, init);
 	raycaster(init);
+	print_xpm(init, "xpm.xpm");
 	mlx_put_image_to_window(init->mlx, init->win, init->img->img, 0, 0);
 	return (0);
 }

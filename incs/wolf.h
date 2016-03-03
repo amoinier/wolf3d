@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:10:31 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/02 20:07:10 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/03 14:59:51 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef	struct	s_img
 {
 	void		*img;
 	char		*cimg;
+	int			width;
+	int			height;
 	int			bpp;
 	int			sizel;
 	int			endn;
@@ -50,14 +52,15 @@ typedef	struct	s_env
 
 	int			sizeb;
 	int			sizefps;
-	int			posinitx;
-	int			posinity;
+	double		posinitx;
+	double		posinity;
 	int			poscamx;
 	int			poscamy;
 	int			camangle;
 	double		distval;
 
 	t_img		*img;
+	t_img		*sky;
 	t_point		***point;
 }				t_env;
 
@@ -71,6 +74,7 @@ void			raycaster(t_env *init);
 double				adn(t_env *init, double x1, double x2, double y1, double y2);
 
 void			pixel_put_image(t_env *init, int x, int y, int color);
+void			print_xpm(t_env *init, char *filename);
 void			ft_clear_img(t_env *init);
 
 int				ft_countcara(char *str);
