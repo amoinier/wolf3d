@@ -6,11 +6,12 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:12:54 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/03 15:05:08 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/03 17:34:56 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
+#include <math.h>
 #include <stdio.h>
 /*
 int				mouse_hook(int button, int x, int y, t_env *init)
@@ -37,6 +38,11 @@ void	camera_move(int keycode, t_env *init)
 
 int				key_hook(int keycode, t_env *init)
 {
+	double	sa;
+	double	ca;
+
+	sa = sin(init->camangle * (PI / 180)) / 5;
+	ca = cos(init->camangle * (PI / 180)) / 5;
 	ft_clear_img(init);
 	if (keycode == 53)
 	{
@@ -44,17 +50,29 @@ int				key_hook(int keycode, t_env *init)
 		mlx_destroy_window(init->mlx, init->win);
 		exit(0);
 	}
-	if (keycode == 126 && init->point[(int)init->posinity - 1][(int)init->posinitx]->z != 1)
-		init->posinity -= 0.1;
-	if (keycode == 125 && init->point[(int)init->posinity + 1][(int)init->posinitx]->z != 1)
-		init->posinity += 0.1;
-	if (keycode == 123 && init->point[(int)init->posinity][(int)init->posinitx - 1]->z != 1)
-		init->posinitx -= 0.1;
-	if (keycode == 124 && init->point[(int)init->posinity][(int)init->posinitx + 1]->z != 1)
-		init->posinitx += 0.1;
+	printf("%f - %f\n", sa, ca);
+	if (keycode == 126 && init->point[(int)(init->posinity - (sa * 5))][(int)(init->posinitx - (ca * 5))]->z != 1)
+	{
+		init->posinity -= sa;
+		init->posinitx -= ca;
+	}
+	if (keycode == 125 && init->point[(int)(init->posinity + (sa * 5))][(int)(init->posinitx + (ca * 5))]->z != 1)
+	{
+		init->posinity += sa;
+		init->posinitx += ca;
+	}
+	if (keycode == 123 && init->point[(int)(init->posinity + (ca * 5))][(int)(init->posinitx - (sa * 5))]->z != 1)
+	{
+		init->posinity += ca;
+		init->posinitx -= sa;
+	}
+	if (keycode == 124 && init->point[(int)(init->posinity - (ca * 5))][(int)(init->posinitx + (sa * 5))]->z != 1)
+	{
+		init->posinity -= ca;
+		init->posinitx += sa;
+	}
 	camera_move(keycode, init);
 	raycaster(init);
-	print_xpm(init, "xpm.xpm");
 	mlx_put_image_to_window(init->mlx, init->win, init->img->img, 0, 0);
 	return (0);
 }

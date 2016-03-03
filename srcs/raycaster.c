@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 19:37:32 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/03 14:51:17 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/03 16:50:39 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,32 +28,6 @@ double		dist_hor(t_env *init, double xcam, double ycam, double angle)
 	adn(init, xcam, x2, ycam, y2);
 	return (adn(init, xcam, x2, ycam, y2));
 }
-
-// double		dist_ver(t_env *init, double xcam, double ycam, double angle)
-// {
-// 	double	bx;
-// 	double	by;
-// 	double	xa;
-// 	double	ya;
-// 	double	x2;
-// 	double	y2;
-//
-// 	if (angle < 90 && angle > 270)
-// 	{
-// 		bx = (xcam/64) * (64) + 64;
-// 		xa = 64;
-// 	}
-// 	else
-// 	{
-// 		bx = (xcam/64) * (64) - 1;
-// 		xa = -64;
-// 	}
-// 	ya = (64 * tan(angle * (PI / 180)));
-// 	by = ycam + (xcam - bx) * tan(angle * (PI / 180));
-// 	x2 = bx - (10 * xa);
-// 	y2 = by - (10 * ya);
-// 	return (adn(init, xcam, x2, ycam, y2));
-// }
 
 void	draw_wall(t_env *init, int x, double sizewall)
 {
