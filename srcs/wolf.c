@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:09:53 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/03 18:28:46 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/04 15:59:14 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ static	t_img	*ft_init_img(t_env *init)
 
 static	void	ft_initenv(t_env *init)
 {
+	t_dist	*dist;
+
+	if (!(dist = (t_dist *)malloc(sizeof(*dist))))
+		error("error : Malloc dist");
 	init->width = 1280;
 	init->height = 800;
 	init->posinitx = -1;
@@ -37,7 +41,9 @@ static	void	ft_initenv(t_env *init)
 	init->poscamx = 0;
 	init->poscamy = 0;
 	init->camangle = 90;
-	init->distval = 0;
+	init->dist = dist;
+	init->dist->distval = 0;
+	init->dist->color = 0;
 	init->img = ft_init_img(init);
 }
 
@@ -51,8 +57,7 @@ void			mlx_var(t_env *init, char **av)
 	raycaster(init);
 	mlx_put_image_to_window(init->mlx, init->win, init->img->img, 0, 0);
 	mlx_hook(init->win, 2, 0, key_hook, init);
-	//mlx_hook(init->win, 6, 0, mouse, init);
-	//mlx_hook(init->win, 4, 0, mouse_hook, init);
+	mlx_hook(init->win, 6, 0, mousecam, init);
 	mlx_expose_hook(init->win, expose_hook, init);
 	mlx_loop(init->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:10:31 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/03 16:36:36 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/04 16:00:07 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ typedef	struct	s_img
 	int			endn;
 }				t_img;
 
+typedef	struct	s_dist
+{
+	double		distval;
+	int			color;
+}				t_dist;
+
 typedef	struct	s_env
 {
 	void		*mlx;
@@ -57,14 +63,16 @@ typedef	struct	s_env
 	int			poscamx;
 	int			poscamy;
 	int			camangle;
-	double		distval;
 
 	t_img		*img;
 	t_point		***point;
+	t_dist		*dist;
+
 }				t_env;
 
 int				mouse_hook(int button, int x, int y, t_env *init);
 int				key_hook(int keycode, t_env *init);
+int				mousecam(int x, int y, t_env *init);
 int				expose_hook(t_env *init);
 
 void			mlx_var(t_env *init, char **av);
