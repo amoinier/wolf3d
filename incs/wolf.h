@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:10:31 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/04 16:00:07 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/04 18:12:12 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,14 @@ typedef struct	s_point
 	int			x;
 	int			y;
 	int			z;
-
-	int			px;
-	int			py;
-
 	int			sizeline;
 	int			sizecol;
-	int			col;
 }				t_point;
 
 typedef	struct	s_img
 {
 	void		*img;
 	char		*cimg;
-	int			width;
-	int			height;
 	int			bpp;
 	int			sizel;
 	int			endn;
@@ -55,14 +48,12 @@ typedef	struct	s_env
 	void		*win;
 	int			width;
 	int			height;
+	int			center;
 
-	int			sizeb;
-	int			sizefps;
 	double		posinitx;
 	double		posinity;
-	int			poscamx;
-	int			poscamy;
 	int			camangle;
+	double		camy;
 
 	t_img		*img;
 	t_point		***point;

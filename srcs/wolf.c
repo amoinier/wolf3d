@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:09:53 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/04 15:59:14 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/04 18:12:36 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,11 @@ static	void	ft_initenv(t_env *init)
 		error("error : Malloc dist");
 	init->width = 1280;
 	init->height = 800;
+	init->center = init->height / 2;
 	init->posinitx = -1;
 	init->posinity = -1;
-	init->sizeb = 64;
-	init->sizefps = init->sizeb / 2;
-	init->poscamx = 0;
-	init->poscamy = 0;
 	init->camangle = 90;
+	init->camy = 0;
 	init->dist = dist;
 	init->dist->distval = 0;
 	init->dist->color = 0;
@@ -66,7 +64,6 @@ int				main(int ac, char **av)
 {
 	t_env	*init;
 
-	(void)av;
 	if (ac == 2)
 	{
 		if (!(init = (t_env *)malloc(sizeof(*init))))

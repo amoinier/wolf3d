@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:12:54 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/04 16:06:00 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/04 18:02:32 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,16 @@
 int				mousecam(int x, int y, t_env *init)
 {
 	ft_clear_img(init);
-	y *= 1;
+	init->camangle = x * (2600 / 360) / 20;
 	if (init->camangle == 360)
 		init->camangle = 0;
 	else if (init->camangle == 0)
 		init->camangle = 360;
-	init->camangle = x * (2600 / 360) / 20;
+	init->camy = -(y + 200) * ((1440) / 100) / 20;
+	if (init->camy >= 100)
+		init->camy = 99;
+	else if (init->camy <= -401)
+		init->camy = -399;
 	raycaster(init);
 	mlx_put_image_to_window(init->mlx, init->win, init->img->img, 0, 0);
 	return (0);
@@ -35,14 +39,6 @@ void	move(int keycode, t_env *init)
 
 	sa = sin(init->camangle * (PI / 180)) / 5;
 	ca = cos(init->camangle * (PI / 180)) / 5;
-	// if (init->camangle == 360)
-	// 	init->camangle = 0;
-	// else if (init->camangle == 0)
-	// 	init->camangle = 360;
-	// if (keycode == 12)
-	// 	init->camangle -= 3;
-	// if (keycode == 14)
-	// 	init->camangle += 3;
 	if (keycode == 126 && init->point[(int)(init->posinity - (sa * 3))][(int)(init->posinitx - (ca * 3))]->z != 1)
 	{
 		init->posinity -= sa;

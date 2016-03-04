@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 19:37:32 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/04 15:02:47 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/04 18:15:00 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ double		dist_hor(t_env *init, double xcam, double ycam, double angle)
 	double	x2;
 	double	y2;
 
-	sa = sin(angle * (PI / 180));
-	ca = cos(angle * (PI / 180));
-	x2 = xcam - (30 * ca);
-	y2 = ycam - (30 * sa);
+	sa = sin(angle * 0.0174532925);
+	ca = cos(angle * 0.0174532925);
+	x2 = xcam - (50 * ca);
+	y2 = ycam - (50 * sa);
 	adn(init, xcam, x2, ycam, y2);
 	return (adn(init, xcam, x2, ycam, y2));
 }
@@ -33,7 +33,7 @@ void	draw_sky(t_env *init, int x, double sizewall)
 {
 	int	y;
 
-	y = rand() % (init->height / 2) - (sizewall / 2);
+	y = rand() % (init->center) - (sizewall / 2) + init->camy;
 	pixel_put_image(init, x, y, 0xffffff);
 }
 
@@ -41,8 +41,8 @@ void	draw_wall(t_env *init, int x, double sizewall)
 {
 	int	y;
 
-	y = (init->height / 2) - (sizewall / 2);
-	while (y <= (init->height / 2) + (sizewall / 2))
+	y = (init->center) - (sizewall / 2) + init->camy;
+	while (y <= (init->center) + (sizewall / 2) + init->camy)
 	{
 		pixel_put_image(init, x, y, init->dist->color);
 		y++;
@@ -53,7 +53,7 @@ void	draw_floor(t_env *init, int x, double sizewall)
 {
 	int	y;
 
-	y = (init->height / 2) + (sizewall / 2);
+	y = (init->center) + (sizewall / 2) + init->camy;
 	while (y <= init->height)
 	{
 		pixel_put_image(init, x, y, 0x2a2828);

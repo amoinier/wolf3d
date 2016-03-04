@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 14:40:48 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/04 14:57:55 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/04 18:16:08 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_point			***ft_createstruct(t_env *init, char **av)
 		line = NULL;
 		i++;
 	}
+	close(fd);
 	if (ret != 0 || i == 0)
 		error("error : ret != 0 || i == 0");
 	free(line);
