@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:10:31 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/04 18:12:12 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/04 19:56:09 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include "libft.h"
 # include <mlx.h>
-
-#define PI 3.14159265
 
 typedef struct	s_point
 {
@@ -56,6 +54,7 @@ typedef	struct	s_env
 	double		camy;
 
 	t_img		*img;
+	t_img		*map;
 	t_point		***point;
 	t_dist		*dist;
 
@@ -68,10 +67,13 @@ int				expose_hook(t_env *init);
 
 void			mlx_var(t_env *init, char **av);
 
+void			drawmap(t_env *init);
+
 void			raycaster(t_env *init);
-double				adn(t_env *init, double x1, double x2, double y1, double y2);
+double			adn(t_env *init, double x1, double y1, double xy2[2]);
 
 void			pixel_put_image(t_env *init, int x, int y, int color);
+void			pixel_put_map(t_env *init, int x, int y, int color);
 void			ft_clear_img(t_env *init);
 
 int				ft_countcara(char *str);

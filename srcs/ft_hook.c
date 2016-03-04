@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:12:54 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/04 18:02:32 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/04 20:04:01 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,36 +29,49 @@ int				mousecam(int x, int y, t_env *init)
 		init->camy = -399;
 	raycaster(init);
 	mlx_put_image_to_window(init->mlx, init->win, init->img->img, 0, 0);
+	drawmap(init);
+	mlx_put_image_to_window(init->mlx, init->win, init->map->img,
+	init->width - init->point[0][0]->sizecol * 5,
+	init->height - init->point[0][0]->sizeline * 5);
 	return (0);
 }
 
-void	move(int keycode, t_env *init)
+static	void	utils(t_env *init, int keycode, double sa, double ca)
 {
-	double	sa;
-	double	ca;
-
-	sa = sin(init->camangle * (PI / 180)) / 5;
-	ca = cos(init->camangle * (PI / 180)) / 5;
-	if (keycode == 126 && init->point[(int)(init->posinity - (sa * 3))][(int)(init->posinitx - (ca * 3))]->z != 1)
+	if (keycode == 126 && init->point[(int)(init->posinity - (sa * 2.5))]
+	[(int)(init->posinitx - (ca * 2.5))]->z != 1)
 	{
 		init->posinity -= sa;
 		init->posinitx -= ca;
 	}
-	if (keycode == 125 && init->point[(int)(init->posinity + (sa * 3))][(int)(init->posinitx + (ca * 3))]->z != 1)
+	if (keycode == 125 && init->point[(int)(init->posinity + (sa * 2.5))]
+	[(int)(init->posinitx + (ca * 2.5))]->z != 1)
 	{
 		init->posinity += sa;
 		init->posinitx += ca;
 	}
-	if (keycode == 123 && init->point[(int)(init->posinity + (ca * 3))][(int)(init->posinitx - (sa * 3))]->z != 1)
+	if (keycode == 123 && init->point[(int)(init->posinity + (ca * 2.5))]
+	[(int)(init->posinitx - (sa * 2.5))]->z != 1)
 	{
 		init->posinity += ca;
 		init->posinitx -= sa;
 	}
-	if (keycode == 124 && init->point[(int)(init->posinity - (ca * 3))][(int)(init->posinitx + (sa * 3))]->z != 1)
+	if (keycode == 124 && init->point[(int)(init->posinity - (ca * 2.5))]
+	[(int)(init->posinitx + (sa * 2.5))]->z != 1)
 	{
 		init->posinity -= ca;
 		init->posinitx += sa;
 	}
+}
+
+static	void	move(int keycode, t_env *init)
+{
+	double	sa;
+	double	ca;
+
+	sa = sin(init->camangle * 0.0174532925) / 5;
+	ca = cos(init->camangle * 0.0174532925) / 5;
+	utils(init, keycode, sa, ca);
 }
 
 int				key_hook(int keycode, t_env *init)
@@ -73,11 +86,20 @@ int				key_hook(int keycode, t_env *init)
 	move(keycode, init);
 	raycaster(init);
 	mlx_put_image_to_window(init->mlx, init->win, init->img->img, 0, 0);
+	drawmap(init);
+	mlx_put_image_to_window(init->mlx, init->win, init->map->img,
+	init->width - init->point[0][0]->sizecol * 5,
+	init->height - init->point[0][0]->sizeline * 5);
 	return (0);
 }
 
 int				expose_hook(t_env *init)
 {
 	raycaster(init);
+	mlx_put_image_to_window(init->mlx, init->win, init->img->img, 0, 0);
+	drawmap(init);
+	mlx_put_image_to_window(init->mlx, init->win, init->map->img,
+	init->width - init->point[0][0]->sizecol * 5,
+	init->height - init->point[0][0]->sizeline * 5);
 	return (0);
 }

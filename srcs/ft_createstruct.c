@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:42:35 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/04 18:06:19 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/04 20:02:57 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,8 @@ t_point				**init_point(t_env *init, char *line, int j)
 		if (verif_str(s[i]) == 0)
 			error("error : verif_str");
 		point[i] = ft_pointnew(i, j, ft_atoi(s[i]), coln);
-		if (point[i]->z == 42)
-		{
-			init->posinitx = i;
+		if (point[i]->z == 42 && (init->posinitx = i) == i)
 			init->posinity = j;
-		}
 		free(s[i]);
 		i++;
 	}

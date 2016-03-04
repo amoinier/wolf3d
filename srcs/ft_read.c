@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 14:40:48 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/04 18:16:08 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/04 20:00:41 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static	t_point		***ft_realloc(t_point ***p, int nline)
 	return (p);
 }
 
-t_point			***ft_createstruct(t_env *init, char **av)
+t_point				***ft_createstruct(t_env *init, char **av)
 {
 	t_point	***point;
 	int		fd;
@@ -49,7 +49,6 @@ t_point			***ft_createstruct(t_env *init, char **av)
 		point[i] = init_point(init, line, i);
 		point = ft_realloc(point, i + 1);
 		free(line);
-		line = NULL;
 		i++;
 	}
 	close(fd);
@@ -58,7 +57,5 @@ t_point			***ft_createstruct(t_env *init, char **av)
 	free(line);
 	line = NULL;
 	point[0][0]->sizeline = i;
-	if (init->posinitx == -1 || init->posinity == -1)
-		error("error : posinitx == -1");
 	return (point);
 }

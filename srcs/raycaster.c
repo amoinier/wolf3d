@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 19:37:32 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/04 18:15:00 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/04 20:15:57 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,16 @@ double		dist_hor(t_env *init, double xcam, double ycam, double angle)
 {
 	double	sa;
 	double	ca;
-	double	x2;
-	double	y2;
+	double	xy2[2];
 
 	sa = sin(angle * 0.0174532925);
 	ca = cos(angle * 0.0174532925);
-	x2 = xcam - (50 * ca);
-	y2 = ycam - (50 * sa);
-	adn(init, xcam, x2, ycam, y2);
-	return (adn(init, xcam, x2, ycam, y2));
+	xy2[0] = xcam - (50 * ca);
+	xy2[1] = ycam - (50 * sa);
+	return (adn(init, xcam, ycam, xy2));
 }
 
-void	draw_sky(t_env *init, int x, double sizewall)
+void		draw_sky(t_env *init, int x, double sizewall)
 {
 	int	y;
 
@@ -37,7 +35,7 @@ void	draw_sky(t_env *init, int x, double sizewall)
 	pixel_put_image(init, x, y, 0xffffff);
 }
 
-void	draw_wall(t_env *init, int x, double sizewall)
+void		draw_wall(t_env *init, int x, double sizewall)
 {
 	int	y;
 
@@ -49,7 +47,7 @@ void	draw_wall(t_env *init, int x, double sizewall)
 	}
 }
 
-void	draw_floor(t_env *init, int x, double sizewall)
+void		draw_floor(t_env *init, int x, double sizewall)
 {
 	int	y;
 
@@ -61,20 +59,20 @@ void	draw_floor(t_env *init, int x, double sizewall)
 	}
 }
 
-void	raycaster(t_env *init)
+void		raycaster(t_env *init)
 {
 	int		x;
 	double	ang;
 	double	sizewall;
 	double	scal;
-	double 	distval;
+	double	distval;
 
 	x = 0;
 	ang = init->camangle - 30;
 	scal = 60 / (double)init->width;
 	while (x <= init->width)
 	{
-		distval = dist_hor(init, (double)init->posinitx, (double)init->posinity, ang);
+		distval = dist_hor(init, init->posinitx, init->posinity, ang);
 		sizewall = (double)init->height / (distval);
 		draw_wall(init, x, sizewall);
 		draw_sky(init, x, sizewall);
