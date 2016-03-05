@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:09:53 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/04 19:59:47 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/05 16:49:50 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ static	void	ft_initenv(t_env *init)
 	init->width = 1280;
 	init->height = 800;
 	init->center = init->height / 2;
+	init->mapkey = 0;
 	init->posinitx = -1;
 	init->posinity = -1;
+	init->scale = 60 / (double)init->width;
 	init->camangle = 90;
 	init->camy = 0;
 	init->dist = dist;
@@ -56,7 +58,7 @@ void			mlx_var(t_env *init, char **av)
 	init->point[0][0]->sizeline * 5);
 	init->win = mlx_new_window(init->mlx, init->width, init->height,
 	"WOLF3D");
-	mlx_hook(init->win, 2, 0, key_hook, init);
+	mlx_hook(init->win, 2, 1, key_hook, init);
 	mlx_hook(init->win, 6, 0, mousecam, init);
 	mlx_expose_hook(init->win, expose_hook, init);
 	mlx_loop(init->mlx);

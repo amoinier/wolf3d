@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:10:31 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/04 19:56:09 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/05 20:48:14 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include <mlx.h>
+#include <stdio.h>
 
 typedef struct	s_point
 {
@@ -47,7 +48,9 @@ typedef	struct	s_env
 	int			width;
 	int			height;
 	int			center;
+	int			mapkey;
 
+	double		scale;
 	double		posinitx;
 	double		posinity;
 	int			camangle;
