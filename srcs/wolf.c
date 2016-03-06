@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:09:53 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/06 17:01:37 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/06 18:49:52 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,16 @@ static	void	ft_initenv(t_env *init)
 
 void			mlx_var(t_env *init, char *av)
 {
+
 	init->mlx = mlx_init();
 	ft_initenv(init);
+	init->win = mlx_new_window(init->mlx, init->width, init->height,
+	"WOLF3D");
 	init->point = ft_createstruct(init, av);
 	if (init->posinitx == -1 || init->posinity == -1)
 		error("error : posinitx == -1");
 	init->map = ft_init_img(init, init->point[0][0]->sizecol * 5,
 	init->point[0][0]->sizeline * 5);
-	init->win = mlx_new_window(init->mlx, init->width, init->height,
-	"WOLF3D");
 	mlx_hook(init->win, 2, 1, key_hook, init);
 	mlx_hook(init->win, 6, 0, mousecam, init);
 	mlx_expose_hook(init->win, expose_hook, init);

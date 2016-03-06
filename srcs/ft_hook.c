@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:12:54 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/06 18:07:12 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/06 18:49:20 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,9 @@ int				key_hook(int keycode, t_env *init)
 	if (init->point[(int)(init->posinity)]
 	[(int)(init->posinitx)]->z == 9)
 	{
-		mlx_destroy_image(init->mlx, init->img->img);
-		mlx_destroy_image(init->mlx, init->map->img);
+		//mlx_destroy_image(init->mlx, init->img->img);
+		if (init->mapkey == 1)
+			mlx_destroy_image(init->mlx, init->map->img);
 		mlx_var(init, selectmaps());
 	}
 	return (0);
