@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 14:40:48 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/04 20:00:41 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/06 16:39:46 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static	t_point		***ft_realloc(t_point ***p, int nline)
 	return (p);
 }
 
-t_point				***ft_createstruct(t_env *init, char **av)
+t_point				***ft_createstruct(t_env *init, char *av)
 {
 	t_point	***point;
 	int		fd;
@@ -42,7 +42,7 @@ t_point				***ft_createstruct(t_env *init, char **av)
 	i = 0;
 	if (!(point = (t_point ***)malloc(sizeof(point))))
 		error("error : ft_createstruct");
-	if ((fd = open(av[1], O_RDONLY)) == -1)
+	if ((fd = open(av, O_RDONLY)) == -1)
 		error("error : Bad fd");
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{

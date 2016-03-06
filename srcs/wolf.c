@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:09:53 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/05 16:49:50 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/06 17:01:37 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,17 @@ static	void	ft_initenv(t_env *init)
 	init->posinitx = -1;
 	init->posinity = -1;
 	init->scale = 60 / (double)init->width;
-	init->camangle = 90;
+	init->camangle = 315;
 	init->camy = 0;
+	init->run = 15;
+	init->activey = 0;
 	init->dist = dist;
 	init->dist->distval = 0;
 	init->dist->color = 0;
 	init->img = ft_init_img(init, init->width, init->height);
 }
 
-void			mlx_var(t_env *init, char **av)
+void			mlx_var(t_env *init, char *av)
 {
 	init->mlx = mlx_init();
 	ft_initenv(init);
@@ -68,13 +70,16 @@ int				main(int ac, char **av)
 {
 	t_env	*init;
 
-	if (ac == 2)
+	if (ac <= 2)
 	{
 		if (!(init = (t_env *)malloc(sizeof(*init))))
 			error("error : main");
-		mlx_var(init, av);
+		if (ac < 2)
+			mlx_var(init, selectmaps());
+		else
+			mlx_var(init, av[1]);
 	}
 	else
-		error("error : ac != 2");
+		error("error : ac > 2");
 	return (0);
 }

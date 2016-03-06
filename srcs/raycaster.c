@@ -6,13 +6,12 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 19:37:32 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/05 20:51:46 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/06 16:56:57 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 #include <math.h>
-#include <stdio.h>
 
 double		dist_hor(t_env *init, double xcam, double ycam, double angle)
 {
@@ -24,8 +23,7 @@ double		dist_hor(t_env *init, double xcam, double ycam, double angle)
 	ca = cos(angle * 0.0174532925);
 	xy2[0] = xcam - (1000 * ca);
 	xy2[1] = ycam - (1000 * sa);
-	//printf("%f - %f\n", sa, ca);
-	return (adn(init, xcam, ycam, xy2) * cos((init->camangle - angle) * 0.0174532925));
+	return (adn(init, xcam, ycam, xy2) * cos((init->camangle - angle) * RAD));
 }
 
 void		draw_sky(t_env *init, int x, double sizewall)
