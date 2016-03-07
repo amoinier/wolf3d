@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:10:31 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/07 18:59:09 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/07 19:54:22 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,17 @@ typedef	struct	s_env
 
 }				t_env;
 
-int				mouse_hook(int button, int x, int y, t_env *init);
+int				mouse_hook(int x, int y, t_env *init);
 int				key_hook(int keycode, t_env *init);
 int				loop_hook(t_env *init);
-int				mousecam(int x, int y, t_env *init);
 int				expose_hook(t_env *init);
+
+void			move(int keycode, t_env *init);
+void			load_map(t_env *init);
 
 void			mlx_var(t_env *init, char *av);
 
 void			drawmap(t_env *init);
-
 void			raycaster(t_env *init);
 double			adn(t_env *init, double x1, double y1, double xy2[2]);
 
