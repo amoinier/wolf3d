@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 11:51:18 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/06 16:37:26 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/07 17:19:37 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,18 @@ double			adn(t_env *init, double x1, double y1, double xy2[2])
 	size = fabs(xy2[1] - y1);
 	if (fabs(xy2[0] - x1) >= size)
 		size = fabs(xy2[0] - x1);
-	size *= 400;
+	size *= 300;
 	dx = (xy2[0] - x1) / size;
 	dy = (xy2[1] - y1) / size;
 	x = x1 + 0.1;
 	y = y1 + 0.1;
-	while (init->point[(int)y][(int)x]->z != 1 && init->point[(int)y][(int)x]->z != 9)
+	while (init->point[(int)y][(int)x]->z != 1 &&
+	init->point[(int)y][(int)x]->z != 9)
 	{
 		x += dx;
 		y += dy;
 	}
 	color_code(init, x, y);
-	init->dist->distval = sqrt(pow(x - x1, 2) + pow(y - y1, 2));
+	init->dist->distval = sqrt((x - x1) * (x - x1) + (y - y1) * (y - y1));
 	return (init->dist->distval);
 }

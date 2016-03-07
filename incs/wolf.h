@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:10:31 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/06 17:01:41 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/07 17:33:09 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <stdio.h>
 
 # define RAD 0.0174532925
+# define PI 3.14159265359
 
 typedef struct	s_point
 {
@@ -53,6 +54,9 @@ typedef	struct	s_env
 	int			mapkey;
 	int			run;
 	int			activey;
+	int			games;
+
+	char		*name;
 
 	double		scale;
 	double		posinitx;
@@ -87,8 +91,7 @@ int				ft_countcara(char *str);
 t_point			***ft_createstruct(t_env *init, char *av);
 t_point			**init_point(t_env *init, char *line, int j);
 
-int				collision_sa(t_env *init, double sa, double ca, int keycode);
-int				collision_ca(t_env *init, double ca, double sa, int keycode);
+void			utils(t_env *init, int keycode, double sa, double ca);
 
 int				error(char *s);
 

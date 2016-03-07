@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 19:37:32 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/06 16:56:57 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/07 17:34:08 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ double		dist_hor(t_env *init, double xcam, double ycam, double angle)
 	double	ca;
 	double	xy2[2];
 
-	sa = sin(angle * 0.0174532925);
-	ca = cos(angle * 0.0174532925);
+	sa = sin(angle * (PI / 180));
+	ca = cos(angle * (PI / 180));
 	xy2[0] = xcam - (1000 * ca);
 	xy2[1] = ycam - (1000 * sa);
 	return (adn(init, xcam, ycam, xy2) * cos((init->camangle - angle) * RAD));

@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 12:13:16 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/04 19:56:16 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/07 11:14:14 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void			ft_clear_img(t_env *init)
 
 	size = init->width * init->height * 4 - 1;
 	ft_bzero(init->img->cimg, size);
-	size = init->point[0][0]->sizecol * 5 *
-	init->point[0][0]->sizeline * 5 * 4 - 1;
+	size = 500 * 500 * 4 - 1;
 	ft_bzero(init->map->cimg, size);
 }
 
