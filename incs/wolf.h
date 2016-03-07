@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:10:31 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/07 17:33:09 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/07 18:59:09 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include <mlx.h>
+# include <time.h>
 #include <stdio.h>
 
 # define RAD 0.0174532925
@@ -56,6 +57,8 @@ typedef	struct	s_env
 	int			activey;
 	int			games;
 
+	time_t		start_time;
+
 	char		*name;
 
 	double		scale;
@@ -73,6 +76,7 @@ typedef	struct	s_env
 
 int				mouse_hook(int button, int x, int y, t_env *init);
 int				key_hook(int keycode, t_env *init);
+int				loop_hook(t_env *init);
 int				mousecam(int x, int y, t_env *init);
 int				expose_hook(t_env *init);
 

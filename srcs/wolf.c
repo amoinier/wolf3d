@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:09:53 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/07 17:35:40 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/07 19:11:02 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,36 +48,24 @@ static	void	ft_initenv(t_env *init, char *av)
 	init->dist->distval = 0;
 	init->dist->color = 0;
 	init->name = av;
+	init->start_time = time(NULL);
 	init->point = ft_createstruct(init, av);
 	if (init->posinitx == -1 || init->posinity == -1)
 		error("error : posinitx == -1");
-	init->posinity += 0.5;
-	init->posinitx += 0.5;
 	init->map = ft_init_img(init, 500, 500);
 	init->img = ft_init_img(init, init->width, init->height);
 }
 
 void			mlx_var(t_env *init, char *av)
 {
-	static	int	x = 0;
-
-	if (x == 0)
-		init->mlx = mlx_init();
-	x++;
+	init->mlx = mlx_init();
 	init->win = mlx_new_window(init->mlx, 1280, 800,
 	"WOLF3D");
 	ft_initenv(init, av);
 	mlx_hook(init->win, 6, 0, mousecam, init);
 	mlx_hook(init->win, 2, 1, key_hook, init);
-	if (ft_strequ(init->name, "map/end"))
-	{
-		init->games = 0;
-		mlx_string_put(init->mlx, init->win, init->width / 2 - 150,
-		init->height / 2, 0xffffff, "Vous avez finis le jeux !");
-		mlx_string_put(init->mlx, init->win, init->width / 2 - 150,
-		init->height / 2 + 20, 0xff0000, "Appuyez sur [ESC] pour quitter");
-	}
 	mlx_expose_hook(init->win, expose_hook, init);
+	mlx_loop_hook(init->mlx, loop_hook, init);
 	mlx_loop(init->mlx);
 }
 

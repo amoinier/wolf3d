@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 14:40:48 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/06 16:39:46 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/07 19:00:34 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_point				***ft_createstruct(t_env *init, char *av)
 	char	*line;
 
 	i = 0;
+	init->name = av;
 	if (!(point = (t_point ***)malloc(sizeof(point))))
 		error("error : ft_createstruct");
 	if ((fd = open(av, O_RDONLY)) == -1)

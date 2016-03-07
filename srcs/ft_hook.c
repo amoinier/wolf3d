@@ -6,12 +6,13 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:12:54 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/07 17:35:24 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/07 19:43:40 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 #include <math.h>
+#include <time.h>
 
 int				mousecam(int x, int y, t_env *init)
 {
@@ -59,8 +60,8 @@ static	void	move(int keycode, t_env *init)
 		init->mapkey = 0;
 	sa = sin(init->camangle * RAD) / init->run;
 	ca = cos(init->camangle * RAD) / init->run;
-	printf("%f - %f\n", init->posinitx, init->posinity);
-	printf("%f - %f\n\n", ca, sa);
+	//printf("%f - %f\n", init->posinitx, init->posinity);
+	//printf("%f - %f\n\n", ca, sa);
 	utils(init, keycode, sa, ca);
 }
 
@@ -73,6 +74,8 @@ static	void	load_map(t_env *init)
 		init->point = ft_createstruct(init, selectmaps());
 		if (init->posinitx == -1 || init->posinity == -1)
 			error("error : posinitx == -1");
+		init->posinity += 0.5;
+		init->posinitx += 0.5;
 	}
 }
 
@@ -116,6 +119,28 @@ int				expose_hook(t_env *init)
 			init->width - init->point[0][0]->sizecol * 5,
 			init->height - init->point[0][0]->sizeline * 5);
 		}
+	}
+	return (0);
+}
+
+int				loop_hook(t_env *init)
+{
+	static	int	x = 0;
+
+	if (ft_strequ(init->name, "map/end") && x == 0)
+	{
+		ft_clear_img(init);
+		mlx_put_image_to_window(init->mlx, init->win, init->img->img, 0, 0);
+		init->games = 0;
+		mlx_string_put(init->mlx, init->win, init->width / 2 - 140,
+		init->height / 2, 0xffffff, "Vous avez finis le jeux en ");
+		mlx_string_put(init->mlx, init->win, init->width / 2 + 130,
+		init->height / 2, 0xffffff, ft_itoa(time(NULL) - init->start_time));
+		mlx_string_put(init->mlx, init->win, init->width / 2 - 40,
+		init->height / 2 + 20, 0xffffff, "secondes !");
+		mlx_string_put(init->mlx, init->win, init->width / 2 - 150,
+		init->height / 2 + 40, 0xff0000, "Appuyez sur [ESC] pour quitter");
+		x++;
 	}
 	return (0);
 }
