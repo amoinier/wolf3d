@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:09:53 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/08 11:00:29 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/08 18:08:50 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static	void	ft_initenv(t_env *init, char *av)
 	init->scale = 60 / (double)init->width;
 	init->camangle = 315;
 	init->camy = 0;
-	init->run = 15;
+	init->run = 20;
 	init->activey = 0;
 	init->dist = dist;
 	init->dist->distval = 0;

@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:12:54 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/08 11:38:19 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/08 17:26:57 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,20 +88,23 @@ int				expose_hook(t_env *init)
 int				loop_hook(t_env *init)
 {
 	static	int	x = 0;
+	char		*ttime;
 
 	if (ft_strequ(init->name, "map/end") && x == 0)
 	{
+		ttime = ft_itoa(time(NULL) - init->start_time);
 		ft_clear_img(init);
 		mlx_put_image_to_window(init->mlx, init->win, init->img->img, 0, 0);
 		init->games = 0;
 		mlx_string_put(init->mlx, init->win, init->width / 2 - 140,
 		init->height / 2, 0xffffff, "Vous avez finis le jeux en ");
 		mlx_string_put(init->mlx, init->win, init->width / 2 + 130,
-		init->height / 2, 0xffffff, ft_itoa(time(NULL) - init->start_time));
+		init->height / 2, 0xffffff, ttime);
 		mlx_string_put(init->mlx, init->win, init->width / 2 - 40,
 		init->height / 2 + 20, 0xffffff, "secondes !");
 		mlx_string_put(init->mlx, init->win, init->width / 2 - 150,
 		init->height / 2 + 40, 0xff0000, "Appuyez sur [ESC] pour quitter");
+		free(ttime);
 		x++;
 	}
 	return (0);

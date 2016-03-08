@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 19:46:56 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/08 12:51:42 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/08 18:08:42 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	move(int keycode, t_env *init)
 	double	sa;
 	double	ca;
 
-	if (keycode == 49 && init->run == 15)
-		init->run = 5;
-	else if (keycode == 49 && init->run == 5)
-		init->run = 15;
+	if (keycode == 49 && init->run == 20)
+		init->run = 10;
+	else if (keycode == 49 && init->run == 10)
+		init->run = 20;
 	if (keycode == 51 && init->activey == 0)
 		init->activey = 1;
 	else if (keycode == 51 && init->activey == 1 && (init->camy = 0) == 0)
@@ -37,10 +37,30 @@ void	move(int keycode, t_env *init)
 	utils(init, keycode, sa, ca);
 }
 
+void	free_struct(t_env *init)
+{
+	int	x;
+	int	y;
+
+	y = init->point[0][0]->sizeline - 1;
+	while (y >= 0)
+	{
+		x = init->point[y][0]->sizecol - 1;
+		while (x >= 0)
+		{
+			free(init->point[y][x]);
+			x--;
+		}
+		free(init->point[y]);
+		y--;
+	}
+}
+
 void	load_map(t_env *init)
 {
 	if (init->point[(int)(init->posinity)][(int)(init->posinitx)]->z == 9)
 	{
+		free_struct(init);
 		free(init->point);
 		init->point = NULL;
 		init->point = ft_createstruct(init, selectmaps());

@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 11:51:18 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/07 17:19:37 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/08 19:12:12 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ double			adn(t_env *init, double x1, double y1, double xy2[2])
 		x += dx;
 		y += dy;
 	}
-	color_code(init, x, y);
 	init->dist->distval = sqrt((x - x1) * (x - x1) + (y - y1) * (y - y1));
+	color_code(init, x, y);
 	return (init->dist->distval);
 }
