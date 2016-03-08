@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/06 12:54:12 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/07 20:03:31 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/08 12:51:41 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static	int		collision_sa(t_env *init, double sa, double ca, int keycode)
 	}
 	else if (keycode == 125)
 	{
-		if (init->point[(int)(init->posinity + (sa * 2))]
+		if (init->point[(int)(init->posinity + (sa * 4))]
 		[(int)(init->posinitx - ca)]->z != 1)
 			return (1);
 	}
@@ -48,26 +48,26 @@ static	int		collision_ca(t_env *init, double ca, double sa, int keycode)
 	sa *= 1;
 	if (keycode == 126)
 	{
-		if (init->point[(int)(init->posinity - sa * 2)]
+		if (init->point[(int)(init->posinity - sa * 4)]
 		[(int)(init->posinitx - (ca * 4))]->z != 1)
 			return (1);
 	}
 	else if (keycode == 125)
 	{
-		if (init->point[(int)(init->posinity - sa)]
+		if (init->point[(int)(init->posinity - sa * 4)]
 		[(int)(init->posinitx + (ca * 2))]->z != 1)
 			return (1);
 	}
 	else if (keycode == 123)
 	{
-		if (init->point[(int)(init->posinity + (ca * 2))]
-		[(int)(init->posinitx - sa)]->z != 1)
+		if (init->point[(int)(init->posinity + (ca * 1))]
+		[(int)(init->posinitx - sa * 2)]->z != 1)
 			return (1);
 	}
 	else if (keycode == 124)
 	{
-		if (init->point[(int)(init->posinity - (ca * 2))]
-		[(int)(init->posinitx - sa)]->z != 1)
+		if (init->point[(int)(init->posinity - (ca * 1))]
+		[(int)(init->posinitx - sa * 2)]->z != 1)
 			return (1);
 	}
 	return (0);
