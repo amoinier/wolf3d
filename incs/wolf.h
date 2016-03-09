@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:10:31 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/07 19:54:22 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/09 18:13:43 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef	struct	s_img
 typedef	struct	s_dist
 {
 	double		distval;
+	double		smalldist;
+	double		angle;
 	int			color;
 }				t_dist;
 
@@ -64,8 +66,8 @@ typedef	struct	s_env
 	double		scale;
 	double		posinitx;
 	double		posinity;
-	int			camangle;
 	double		camy;
+	int			camangle;
 
 	t_img		*img;
 	t_img		*map;
@@ -86,7 +88,7 @@ void			mlx_var(t_env *init, char *av);
 
 void			drawmap(t_env *init);
 void			raycaster(t_env *init);
-double			adn(t_env *init, double x1, double y1, double xy2[2]);
+double			adn(t_env *init, double xy2[2], double angle);
 
 void			pixel_put_image(t_env *init, int x, int y, int color);
 void			pixel_put_map(t_env *init, int x, int y, int color);

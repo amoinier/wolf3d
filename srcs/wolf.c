@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:09:53 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/09 15:14:32 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/09 18:14:20 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ static	void	ft_initenv(t_env *init, char *av)
 	init->dist = dist;
 	init->dist->distval = 0;
 	init->dist->color = 0;
+	init->dist->smalldist = 0;
+	init->dist->angle = 0;
 	init->name = av;
 	init->start_time = time(NULL);
 	init->point = ft_createstruct(init, av);

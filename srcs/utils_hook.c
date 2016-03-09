@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 19:46:56 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/08 18:08:42 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/09 18:14:10 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	move(int keycode, t_env *init)
 		init->mapkey = 0;
 	sa = sin(init->camangle * RAD) / init->run;
 	ca = cos(init->camangle * RAD) / init->run;
-	printf("%f - %f\n", init->posinitx, init->posinity);
-	printf("%f - %f\n\n", ca, sa);
+	//printf("%f - %f\n", init->posinitx, init->posinity);
+	//printf("%f - %f\n\n", ca, sa);
 	utils(init, keycode, sa, ca);
 }
 
