@@ -6,7 +6,7 @@
 #    By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/07 12:02:38 by amoinier          #+#    #+#              #
-#    Updated: 2016/03/07 17:32:54 by amoinier         ###   ########.fr        #
+#    Updated: 2016/03/09 15:07:35 by amoinier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,22 +19,14 @@ STD =		\033[39m
 
 NAME =		wolf3d
 
-LDIR =		./libs/
-LIBS =		-lft
-
 IDIR =		./incs/
-INCS =		$(shell ls incs/)
-INCC =		$(addprefix $(IDIR),$(INCS))
 
 SDIR =		./srcs/
 SRCS =		$(shell ls srcs/)
-SRCC =		$(addprefix $(SDIR),$(SRCS))
 
 ODIR =		./objs/
 OBJS =		$(SRCS:.c=.o)
 OBCC =		$(addprefix $(ODIR),$(OBJS))
-
-NORM =		$(SRCC) $(INCC) $(EXEC)
 
 FLAG =		-g -O3 -Wall -Wextra -Werror -I$(IDIR)
 
@@ -56,11 +48,6 @@ header:
 	@echo "By: amoinier"
 	@echo
 	@echo "${STD}"
-
-norme: header
-	@echo "${GRE}  Norme${STD}\n"
-	@norminette $(NORM)
-	@echo "${RED}  \nTotal errors :${STD}" $(shell norminette $(NORM) | grep -v "Norme" | wc -l)
 
 clean: header
 	@echo "  ${RED}- Remove objects${STD}"

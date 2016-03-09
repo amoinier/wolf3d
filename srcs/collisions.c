@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/06 12:54:12 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/08 20:43:43 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/09 11:26:39 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static	void	up(t_env *init, int keycode, double sa, double ca)
 	{
 		if (init->point[(int)(init->posinity - sa * 2 - x * 0.1)]
 		[(int)(init->posinitx)]->z != 1 &&
-		init->point[(int)(init->posinity - sa / 1)]
+		init->point[(int)(init->posinity - sa)]
 		[(int)(init->posinitx)]->z != 1)
 			init->posinity -= sa;
 		if (init->point[(int)(init->posinity)]
 		[(int)(init->posinitx - ca * 2 - y * 0.1)]->z != 1 &&
 		init->point[(int)(init->posinity)]
-		[(int)(init->posinitx - ca / 1)]->z != 1)
+		[(int)(init->posinitx - ca)]->z != 1)
 			init->posinitx -= ca;
 	}
 }
@@ -54,13 +54,13 @@ static	void	down(t_env *init, int keycode, double sa, double ca)
 	{
 		if (init->point[(int)(init->posinity + sa * 2 + x * 0.1)]
 		[(int)(init->posinitx)]->z != 1 &&
-		init->point[(int)(init->posinity + sa / 1)]
+		init->point[(int)(init->posinity + sa)]
 		[(int)(init->posinitx)]->z != 1)
 			init->posinity += sa;
 		if (init->point[(int)(init->posinity)]
 		[(int)(init->posinitx + ca * 2 + y * 0.1)]->z != 1 &&
 		init->point[(int)(init->posinity)]
-		[(int)(init->posinitx + ca / 1)]->z != 1)
+		[(int)(init->posinitx + ca)]->z != 1)
 			init->posinitx += ca;
 	}
 }
@@ -78,11 +78,19 @@ static	void	left(t_env *init, int keycode, double ca, double sa)
 		y = -1;
 	if (keycode == 123)
 	{
-		if (init->point[(int)(init->posinity + ca * 2 + y * 0.4)]
-		[(int)(init->posinitx - sa - x * 0.4)]->z != 1)
+		if (init->point[(int)(init->posinity + ca * 2 + y * 0.1)]
+		[(int)(init->posinitx)]->z != 1 &&
+		init->point[(int)(init->posinity + ca * 2 + y * 0.05)]
+		[(int)(init->posinitx)]->z != 1 &&
+		init->point[(int)(init->posinity + ca)]
+		[(int)(init->posinitx)]->z != 1)
 			init->posinity += ca;
-		if (init->point[(int)(init->posinity + ca + y * 0.4)]
-		[(int)(init->posinitx - sa * 2 - x * 0.4)]->z != 1)
+		if (init->point[(int)(init->posinity)]
+		[(int)(init->posinitx - sa * 2 - x * 0.1)]->z != 1 &&
+		init->point[(int)(init->posinity)]
+		[(int)(init->posinitx - sa * 2 - x * 0.05)]->z != 1 &&
+		init->point[(int)(init->posinity)]
+		[(int)(init->posinitx - sa)]->z != 1)
 			init->posinitx -= sa;
 	}
 }
@@ -103,11 +111,19 @@ void			utils(t_env *init, int keycode, double sa, double ca)
 	left(init, keycode, ca, sa);
 	if (keycode == 124)
 	{
-		if (init->point[(int)(init->posinity - ca * 2 - (y * 0.4))]
-		[(int)(init->posinitx + (sa * 2) + (x * 0.4))]->z != 1)
+		if (init->point[(int)(init->posinity - ca * 2 - (y * 0.1))]
+		[(int)(init->posinitx)]->z != 1 &&
+		init->point[(int)(init->posinity - ca * 2 - (y * 0.05))]
+		[(int)(init->posinitx)]->z != 1 &&
+		init->point[(int)(init->posinity - ca)]
+		[(int)(init->posinitx)]->z != 1)
 			init->posinity -= ca;
-		if (init->point[(int)(init->posinity - ca * 2 - (y * 0.4))]
-		[(int)(init->posinitx + (sa * 2) + (x * 0.4))]->z != 1)
+		if (init->point[(int)(init->posinity)]
+		[(int)(init->posinitx + (sa * 2) + (x * 0.1))]->z != 1 &&
+		init->point[(int)(init->posinity)]
+		[(int)(init->posinitx + (sa * 2) + (x * 0.05))]->z != 1 &&
+		init->point[(int)(init->posinity)]
+		[(int)(init->posinitx + sa)]->z != 1)
 			init->posinitx += sa;
 	}
 }

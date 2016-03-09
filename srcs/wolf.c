@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:09:53 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/08 18:08:50 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/09 15:14:32 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,6 @@ int				main(int ac, char **av)
 			mlx_var(init, av[1]);
 	}
 	else
-		error("error : ac > 2");
+		error("error : ac <= 2");
 	return (0);
 }
