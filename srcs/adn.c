@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 11:51:18 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/09 18:13:23 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/09 19:52:36 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static	void	color_code(t_env *init, double x, double y)
 		init->dist->color = 0xffffff;
 }
 
-double			adn(t_env *init, double xy2[2], double angle)
+double			adn(t_env *init, double xy2[2])
 {
 	double	size;
 	double	dx;
@@ -55,12 +55,5 @@ double			adn(t_env *init, double xy2[2], double angle)
 	}
 	init->dist->distval = sqrt((x - init->posinitx) * (x - init->posinitx) + (y - init->posinity) * (y - init->posinity));
 	color_code(init, x, y);
-	if (init->dist->smalldist == 0)
-		init->dist->smalldist = init->dist->distval;
-	if (init->dist->smalldist > init->dist->distval)
-	{
-		init->dist->smalldist = init->dist->distval;
-		init->dist->angle = angle;
-	}
 	return (init->dist->distval);
 }

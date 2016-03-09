@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 19:37:32 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/09 19:10:45 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/09 19:52:50 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ double		dist_hor(t_env *init, double xcam, double ycam, double angle)
 	ca = cos(angle * (PI / 180));
 	xy2[0] = xcam - (1000 * ca);
 	xy2[1] = ycam - (1000 * sa);
-	return (adn(init, xy2, angle) * cos((init->camangle - angle) * RAD));
+	return (adn(init, xy2) * cos((init->camangle - angle) * RAD));
 }
 
 void		draw_sky(t_env *init, int x, double sizewall)
@@ -72,7 +72,6 @@ void		raycaster(t_env *init)
 	ang = init->camangle - 30;
 	while (x <= init->width)
 	{
-		dist_hor(init, init->posinitx, init->posinity, ang);
 		distval = dist_hor(init, init->posinitx, init->posinity, ang);
 		sizewall = (double)init->height / (distval);
 		draw_wall(init, x, sizewall);

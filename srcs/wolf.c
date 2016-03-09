@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:09:53 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/09 18:14:20 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/09 19:53:04 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ static	void	ft_initenv(t_env *init, char *av)
 	init->dist = dist;
 	init->dist->distval = 0;
 	init->dist->color = 0;
-	init->dist->smalldist = 0;
-	init->dist->angle = 0;
 	init->name = av;
 	init->start_time = time(NULL);
 	init->point = ft_createstruct(init, av);
@@ -75,16 +73,14 @@ int				main(int ac, char **av)
 {
 	t_env	*init;
 
-	if (ac <= 2)
+	if (ac < 2)
 	{
+		av[0][0] = '.';
 		if (!(init = (t_env *)malloc(sizeof(*init))))
 			error("error : main");
-		if (ac == 1)
 			mlx_var(init, selectmaps());
-		else
-			mlx_var(init, av[1]);
 	}
 	else
-		error("error : ac <= 2");
+		error("error : ac < 2");
 	return (0);
 }
