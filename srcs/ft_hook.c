@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:12:54 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/09 17:36:03 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/11 16:22:08 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int				mouse_hook(int x, int y, t_env *init)
 		{
 			drawmap(init);
 			mlx_put_image_to_window(init->mlx, init->win, init->map->img,
-			init->width - init->point[0][0]->sizecol * 5,
-			init->height - init->point[0][0]->sizeline * 5);
+			init->width - init->point[0][0]->sizecol * 7,
+			init->height - init->point[0][0]->sizeline * 7);
 		}
 	}
 	return (0);
@@ -61,8 +61,8 @@ int				key_hook(int keycode, t_env *init)
 		{
 			drawmap(init);
 			mlx_put_image_to_window(init->mlx, init->win, init->map->img,
-			init->width - init->point[0][0]->sizecol * 5,
-			init->height - init->point[0][0]->sizeline * 5);
+			init->width - init->point[0][0]->sizecol * 7,
+			init->height - init->point[0][0]->sizeline * 7);
 		}
 	}
 	return (0);
@@ -78,8 +78,8 @@ int				expose_hook(t_env *init)
 		{
 			drawmap(init);
 			mlx_put_image_to_window(init->mlx, init->win, init->map->img,
-			init->width - init->point[0][0]->sizecol * 5,
-			init->height - init->point[0][0]->sizeline * 5);
+			init->width - init->point[0][0]->sizecol * 7,
+			init->height - init->point[0][0]->sizeline * 7);
 		}
 	}
 	return (0);

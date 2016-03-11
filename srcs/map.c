@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 18:30:27 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/05 19:22:05 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/11 16:22:24 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static	void	drawbox(t_env *init, int x, int y, int color)
 	int	j;
 	int	i;
 
-	j = y - 3;
-	while (j <= y + 3)
+	j = y - 4;
+	while (j <= y + 4)
 	{
-		i = x - 3;
-		while (i <= x + 3)
+		i = x - 4;
+		while (i <= x + 4)
 		{
 			pixel_put_map(init, i, j, color);
 			i++;
@@ -60,10 +60,10 @@ void			drawmap(t_env *init)
 		while (x < init->point[y][0]->sizecol)
 		{
 			if (init->point[y][x]->z == 1)
-				drawbox(init, 3 + x * 5, 3 + y * 5, 0xffffff);
+				drawbox(init, 4 + x * 7, 4 + y * 7, 0xffffff);
 			x++;
 		}
 		y++;
 	}
-	drawboxfps(init, 1 + init->posinitx * 5, 1 + init->posinity * 5, 0xff0000);
+	drawboxfps(init, 1 + init->posinitx * 7, 1 + init->posinity * 7, 0xff3b3b);
 }
