@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 19:37:32 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/09 19:52:50 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/11 18:45:43 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ double		dist_hor(t_env *init, double xcam, double ycam, double angle)
 void		draw_sky(t_env *init, int x, double sizewall)
 {
 	int	y;
+	y = 0;
 
-	if (x % 20 == 0)
+	while (y <= (init->center) - (sizewall / 2) + init->camy)
 	{
-		y = rand() % (init->center) - (sizewall / 2) + init->camy;
-		pixel_put_image(init, x, y, 0xffffff);
+		pixel_put_image(init, x, y, 0x0b65c3);
+		y++;
 	}
 }
 
