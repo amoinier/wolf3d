@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 11:51:18 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/09 19:52:36 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/11 13:57:25 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,14 @@ double			adn(t_env *init, double xy2[2])
 	dy = (xy2[1] - init->posinity) / size;
 	x = init->posinitx + 0.1;
 	y = init->posinity + 0.1;
-	while (init->point[(int)y][(int)x]->z != 1 &&
+	while (init->point[(int)y][(int)x] && init->point[(int)y][(int)x]->z != 1 &&
 	init->point[(int)y][(int)x]->z != 9)
 	{
 		x += dx;
 		y += dy;
 	}
-	init->dist->distval = sqrt((x - init->posinitx) * (x - init->posinitx) + (y - init->posinity) * (y - init->posinity));
+	init->dist->distval = sqrt((x - init->posinitx) * (x - init->posinitx) +
+	(y - init->posinity) * (y - init->posinity));
 	color_code(init, x, y);
 	return (init->dist->distval);
 }

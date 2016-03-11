@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:10:31 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/09 19:52:28 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/11 13:57:35 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "libft.h"
 # include <mlx.h>
 # include <time.h>
-#include <stdio.h>
 
 # define RAD 0.0174532925
 # define PI 3.14159265359
@@ -95,6 +94,7 @@ void			ft_clear_img(t_env *init);
 int				ft_countcara(char *str);
 t_point			***ft_createstruct(t_env *init, char *av);
 t_point			**init_point(t_env *init, char *line, int j);
+void			verif_map(t_point ***point);
 
 void			utils(t_env *init, int keycode, double sa, double ca);
 

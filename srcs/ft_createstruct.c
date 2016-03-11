@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:42:35 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/04 20:02:57 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/11 13:47:11 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,38 @@ static	t_point		*ft_pointnew(int x, int y, int z, int coln)
 	point->z = z;
 	point->sizeline = 0;
 	if (x == 0)
+	{
 		point->sizecol = coln;
+		if (z != 1 && z != 9)
+			error("error : no wall");
+	}
+	if (y == 0)
+	{
+		if (z != 1 && z != 9)
+			error("error : no wall");
+	}
 	return (point);
 }
 
 static	int			verif_str(char *s)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
 	while (s[i])
 	{
-		if (s[i] >= 48 && s[i] <= 57)
-			return (1);
+		if (s[i] < 48 || s[i] > 57)
+		{
+			ft_putendl(s);
+			ft_putchar(s[i]);
+			ft_putchar('\n');
+			ft_putnbr(i);
+			ft_putchar('\n');
+			error("error : verif_str");
+		}
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 t_point				**init_point(t_env *init, char *line, int j)
@@ -57,8 +71,7 @@ t_point				**init_point(t_env *init, char *line, int j)
 		error("error : init_point");
 	while (i < coln)
 	{
-		if (verif_str(s[i]) == 0)
-			error("error : verif_str");
+		verif_str(s[i]);
 		point[i] = ft_pointnew(i, j, ft_atoi(s[i]), coln);
 		if (point[i]->z == 42 && (init->posinitx = i) == i)
 			init->posinity = j;
