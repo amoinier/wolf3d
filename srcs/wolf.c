@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 19:09:53 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/11 16:57:25 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/13 15:34:04 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ static	void	ft_initenv(t_env *init, char *av)
 	init->start_time = time(NULL);
 	init->point = ft_createstruct(init, av);
 	verif_map(init->point);
-	init->map = ft_init_img(init, init->point[0][0]->sizecol * 30, init->point[0][0]->sizeline * 30);
-	init->img = ft_init_img(init, init->width, init->height);
+	init->map = ft_init_img(init, init->point[0][0]->sizecol * 30,
+	init->point[0][0]->sizeline * 30);
 }
 
 void			mlx_var(t_env *init, char *av)
@@ -61,6 +61,7 @@ void			mlx_var(t_env *init, char *av)
 	init->win = mlx_new_window(init->mlx, 1280, 800,
 	"WOLF3D");
 	ft_initenv(init, av);
+	init->img = ft_init_img(init, init->width, init->height);
 	if (init->posinitx == -1 || init->posinity == -1)
 		error("error : posinitx == -1");
 	mlx_hook(init->win, 6, 0, mouse_hook, init);
