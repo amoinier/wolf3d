@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:42:35 by amoinier          #+#    #+#             */
-/*   Updated: 2016/03/11 13:47:11 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/03/13 16:00:48 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,7 @@ static	int			verif_str(char *s)
 	while (s[i])
 	{
 		if (s[i] < 48 || s[i] > 57)
-		{
-			ft_putendl(s);
-			ft_putchar(s[i]);
-			ft_putchar('\n');
-			ft_putnbr(i);
-			ft_putchar('\n');
 			error("error : verif_str");
-		}
 		i++;
 	}
 	return (1);
